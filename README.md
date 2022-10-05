@@ -1,4 +1,9 @@
+# Cross-Chain-Query E2E Test
+
+
 1. Init two local blockchains, hermes relayer which implements ics-31 cross-chain-query
+    - Since ics31 doesn't want heavy-stacked ibc components such as connection, channel, port, etc, module doesn't emit packets(which is defined in ics4).
+    - Chains don't have to send txs for connection to each other, relayer catches ibc query events and deals all the processes.
 
 ```shell
 docker compose up
