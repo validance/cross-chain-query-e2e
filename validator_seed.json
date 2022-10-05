@@ -4,4 +4,4 @@
     "name": "validator",
     "pubkey": "{\"@type\":\"/cosmos.crypto.secp256k1.PubKey\",\"key\":\"AjwNEON3OEhPtJtDmPuznViXiwtjjM7y+/6gliJ3Mts8\"}",
     "type": "local"
-  }
+}
