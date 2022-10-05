@@ -19,8 +19,8 @@ RUN curl -Lo /usr/bin/stoml https://github.com/freshautomations/stoml/releases/d
 RUN chmod 755 /usr/bin/sconfig
 RUN chmod 755 /usr/bin/stoml
 
-COPY 3d5b0135281e061e341e43d3a018b5d2902f857f.address /root/.interchain-queries/keyring-test
-COPY validator.info /root/.interchain-queries/keyring-test
+COPY keyring/3d5b0135281e061e341e43d3a018b5d2902f857f.address /root/.interchain-queries/keyring-test
+COPY keyring/validator.info /root/.interchain-queries/keyring-test
 
 COPY gm/ /.gm 
 ENV PATH=$PATH:/.gm
