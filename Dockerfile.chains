@@ -1,0 +1,23 @@
+FROM golang:1.18 AS interchainqueriesd-builder
+
+WORKDIR /
+RUN git clone -b feature/add-chainId-proto https://github.com/decipherhub/interchain-queries
+WORKDIR /interchain-queries
+RUN make install
+
+FROM debian:11.3
+RUN apt update && apt install jq curl git vim procps -y
+
+COPY --from=interchainqueriesd-builder /go/bin/interchain-queriesd /usr/bin 
+COPY --from=interchainqueriesd-builder /interchain-queries/scripts /scripts
+
+RUN chmod +x /scripts/init.sh
+RUN /scripts/init.sh
+
+RUN curl -Lo /usr/bin/sconfig https://github.com/freshautomations/sconfig/releases/download/v0.1.0/sconfig_linux_amd64
+RUN curl -Lo /usr/bin/stoml https://github.com/freshautomations/stoml/releases/download/v0.7.0/stoml_linux_amd64
+RUN chmod 755 /usr/bin/sconfig
+RUN chmod 755 /usr/bin/stoml
+
+COPY gm/ /.gm 
+ENV PATH=$PATH:/.gm

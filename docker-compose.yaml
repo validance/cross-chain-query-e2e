@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  blockchains:
+    container_name: blockchains
+    build:
+      context: .
+      dockerfile: Dockerfile.chains
+    ports:
+      - "27010:27010"
+      - "27011:27011"
+      - "27012:27012"
+      - "27020:27020"
+      - "27021:27021"
+      - "27022:27022"
+      - "27030:27030"
+      - "27031:27031"
+      - "27032:27032"
+      - "27040:27040"
+      - "27041:27041"
+      - "27042:27042"
+
+    command: >
+      bash -c "gm start &&
+               sleep inf"
+
+  hermes:
+    container_name: hermes
+    build:
+      context: .
+      dockerfile: Dockerfile.hermes
+
+    command: bash -c "hermes start"
+    depends_on:
+      - blockchains
+    restart: always
