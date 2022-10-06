@@ -16,7 +16,6 @@ docker compose up
 
 4. Execute test shell script
 ```shell
-chmod +x interchain-query-test.sh
 bash interchain-query-test.sh
 ```
 
@@ -26,6 +25,5 @@ bash interchain-query-test.sh
 
 6. Check the query result
 ```shell
-chmod +x interchain-query-result.sh
 bash interchain-query-result.sh
 ```
