@@ -9,7 +9,7 @@
 docker compose up
 ```
 
-2. Wait until ibc-0, ibc-1, node-0, node-1 are ready. 
+2. Wait until ibc-0, ibc-1, node-0, node-1 are ready. Hermes will fail repeatedly until every node starts.
 
 3. Define your own cross-chain-query requests in interchain-query-test.sh.
     - All you have to do is changing the query path(parameter after command 'ibc-query')
