@@ -1,7 +1,7 @@
 FROM golang:1.18 AS interchainqueriesd-builder
 
 WORKDIR /
-RUN git clone -b feature/add-chainId-proto https://github.com/decipherhub/interchain-queries
+RUN git clone -b feature/proto-package-path https://github.com/decipherhub/interchain-queries
 WORKDIR /interchain-queries
 RUN make install
 
