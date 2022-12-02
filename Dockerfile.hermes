@@ -1,10 +1,10 @@
 FROM rust:1.63.0 AS hermes-builder
 
-RUN git clone -b ics-031-crosschain-qeuries-e2e-test https://github.com/validance/ibc-rs
+RUN git clone -b feature/query-result-with-sender https://github.com/validance/ibc-rs
 WORKDIR /ibc-rs
 RUN cargo build --release
 RUN cp /ibc-rs/target/release/hermes /usr/bin
 COPY config.toml /root/.hermes/config.toml
-COPY validator_seed.json /.hermes/validator_seed.json 
+COPY validator_seed.json /.hermes/validator_seed.json
 RUN hermes keys add --chain ibc-0 --key-file /.hermes/validator_seed.json 
 RUN hermes keys add --chain ibc-1 --key-file /.hermes/validator_seed.json 

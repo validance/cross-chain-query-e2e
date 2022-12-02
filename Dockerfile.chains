@@ -1,7 +1,8 @@
 FROM golang:1.18 AS interchainqueriesd-builder
 
 WORKDIR /
-RUN git clone -b feature/implement-pruneResult https://github.com/decipherhub/interchain-queries
+RUN git clone -b main https://github.com/decipherhub/interchain-queries
+
 WORKDIR /interchain-queries
 RUN make install
 
@@ -21,6 +22,10 @@ RUN chmod 755 /usr/bin/stoml
 
 COPY keyring/3d5b0135281e061e341e43d3a018b5d2902f857f.address /root/.interchain-queries/keyring-test
 COPY keyring/validator.info /root/.interchain-queries/keyring-test
+
+COPY keyring/b0361f0048145c4a010109ae7025a570e9170c07.address /root/.interchain-queries/keyring-test
+COPY keyring/wallet.info /root/.interchain-queries/keyring-test
+
 
 COPY gm/ /.gm 
 ENV PATH=$PATH:/.gm
